@@ -2,25 +2,34 @@
   "name": "vue-data-validator",
   "version": "1.0.0",
   "description": "Data Validation Library, for VueJs. Perhaps useful for other libraries/frameworks and other projects.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "directories": {
     "doc": "docs",
     "example": "examples"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "babel --preset es2015 -d lib/ src/",
+    "prepublish": "npm run compile"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Silksofthesoul/vue-data-validator.git"
   },
   "keywords": [
-    "vuejs"
+    "vuejs",
+    "validation",
+    "forms"
   ],
-  "author": "Labuzov Evgeny",
+  "author": "Labuzov Evgeny <silksofthesoul@yandex.ru>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Silksofthesoul/vue-data-validator/issues"
   },
-  "homepage": "https://github.com/Silksofthesoul/vue-data-validator#readme"
+  "homepage": "https://github.com/Silksofthesoul/vue-data-validator#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1"
+  }
 }
