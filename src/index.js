@@ -1,17 +1,42 @@
-import array from '@/library/array';
+let array = {
+  getItemInObjArrByKey: (key, value, _array) => {
+    if (!key && value) return;
+    if (_array.length === 0) return;
+    for (let i = 0; i <= _array.length; ++i) {
+      if (!_array[i]) return;
+      if (String(_array[i][key]) === String(value)) {
+        return {
+          index: i,
+          object: _array[i]
+        };
+      }
+    }
+    return false;
+  },
+  deleteItemArrByElement: (element, _array) => {
+    let keys = [];
+    _array.forEach((item, i, arr) => {
+      if (item === element) {
+        keys.push(i);
+      }
+    });
+    keys.forEach((item, i, arr) => {
+      _array.splice(item, item + 1);
+    });
+  }
+};
 export default (() => {
-  let obj = {};
+  let obj = { };
   obj.errors = [ ];
 
   obj.init = () => {
-    obj.errors = [];
+    obj.errors = [ ];
   };
   obj.reset = () => {
-    obj.errors = [];
+    obj.errors = [ ];
   };
 
   obj.get = (name) => {
-    // let returnItem = {};
     if (!name) return;
     if (!obj.errors.length === 0) return;
     let returnItem = array.getItemInObjArrByKey('name', name, obj.errors);
