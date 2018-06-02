@@ -10,7 +10,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "babel --preset es2015 -d lib/ src/",
-    "prepublish": "npm run compile"
+    "prepublish": "npm run compile",
+    "prepublishOnly": "npm run compile",
+    "prepare": "npm run compile"
   },
   "repository": {
     "type": "git",
