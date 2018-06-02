@@ -1,5 +1,5 @@
 {
-  "name": "vue-data-validator",
+  "name": "vue-m-validator",
   "version": "1.0.0",
   "description": "Data Validation Library, for VueJs. Perhaps useful for other libraries/frameworks and other projects.",
   "main": "lib/index.js",
@@ -10,12 +10,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "babel --preset es2015 -d lib/ src/",
-    "prepublish": "npm run compile",
-    "install": "npm run compile"
+    "prepublish": "npm run compile"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Silksofthesoul/vue-data-validator.git"
+    "url": "git+https://github.com/Silksofthesoul/vue-m-validator.git"
   },
   "keywords": [
     "vuejs",
@@ -25,9 +24,9 @@
   "author": "Labuzov Evgeny <silksofthesoul@yandex.ru>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Silksofthesoul/vue-data-validator/issues"
+    "url": "https://github.com/Silksofthesoul/vue-m-validator/issues"
   },
-  "homepage": "https://github.com/Silksofthesoul/vue-data-validator#readme",
+  "homepage": "https://github.com/Silksofthesoul/vue-m-validator#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
