@@ -3,13 +3,15 @@ vue-m-validator
 
 Data Validation Library, for VueJs. Perhaps useful for other libraries/frameworks and other projects, but i created this library and using with VueJs with reactive data.
 
+![Example with form](example/screen.png "Example with form")
+
 ## Installation
 ```Commandline
 npm install --save vue-m-validator
 ```
 
 ## Use case
-
+[example with components](https://github.com/Silksofthesoul/vue-m-validator/tree/master/example)
 * Required the library to your project
 ```Javascript
 import validator from 'vue-m-validator';
