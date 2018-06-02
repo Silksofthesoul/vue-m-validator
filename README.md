@@ -1,18 +1,18 @@
-# vue-model-validator
-vue-model-validator
+# vue-m-validator
+vue-m-validator
 
 Data Validation Library, for VueJs. Perhaps useful for other libraries/frameworks and other projects, but i created this library and using with VueJs with reactive data.
 
 ## Installation
 ```Commandline
-npm install --save vue-data-validator
+npm install --save vue-m-validator
 ```
 
 ## Use case
 
 * Required the library to your project
 ```Javascript
-import validator from 'vue-data-validator';
+import validator from 'vue-m-validator';
 ```
 
 * Make library is reactive
@@ -41,7 +41,7 @@ data () {
 validator
     .addRule(RULE_1)
     .addRule(RULE_2)
-    .addRule(RULE_N.);
+    .addRule(RULE_N);
 ```
 for the dyd method, you should use as an argument the object that should have the following look:
 ```Javascript
