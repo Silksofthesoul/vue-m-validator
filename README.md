@@ -43,7 +43,7 @@ validator
     .addRule(RULE_2)
     .addRule(RULE_N);
 ```
-for the dyd method, you should use as an argument the object that should have the following look:
+for the 'addRule' method, you should use as an argument the object that should have the following look:
 ```Javascript
 validator
     .addRule({
