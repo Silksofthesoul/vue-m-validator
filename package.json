@@ -1,6 +1,6 @@
 {
   "name": "vue-m-validator",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Data Validation Library, for VueJs. Perhaps useful for other libraries/frameworks and other projects.",
   "main": "lib/index.js",
   "directories": {

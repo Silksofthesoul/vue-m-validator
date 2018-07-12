@@ -89,13 +89,6 @@ export default (() => {
     return returnItem;
   };
   obj.addRule = (arg) => {
-    console.log('add');
-    // arg example:
-    // {
-    //   expression: !MAIL || MAIL === '',
-    //   name: 'test',
-    //   msg: 'Error'
-    // }
     if (arg.expression) {
       obj.addError(arg);
     } else {
@@ -104,17 +97,6 @@ export default (() => {
     return obj;
   };
   obj.serverCheck = (objArg) => {
-    // objArg example:
-    // {
-    //   address: 'http://servername/path',
-    //   method: 'POST',
-    //   success: (responce)=>{console.log(responce)},
-    //   error: (responce)=>{console.log(responce)},
-    //   data: {
-    //     field1: 'blabla blah',
-    //     field2: 'blabla blah'
-    //   }
-    // }
     if (!objArg || typeof objArg === 'number') return false;
     if (typeof objArg === 'string') {
       try {
@@ -131,8 +113,7 @@ export default (() => {
     let method = objArg.method || 'POST';
     let data = objArg.data;
     let success = objArg.success;
-    let error = objArg.error || (() => { return () => { }; })();
-    console.log(ajax);
+    let error = objArg.error || (() => { return () => { }; })();    
     ajax
       .request({
         address: address,
@@ -191,7 +172,6 @@ export default (() => {
   obj.deleteError = (arg) => {
     let object = obj.get(arg.name);
     let item = object && object.hasOwnProperty('object') ? object.object : undefined;
-    // let index = object && object.hasOwnProperty('index') ? object.index : undefined;
     if (item !== undefined) {
       array.deleteItemArrByElement(arg.msg, item.msgs);
     }
@@ -199,7 +179,6 @@ export default (() => {
   };
 
   obj.deleteAllErrorByName = (strName) => {
-    console.log(obj.errors);
     let counter = 0;
     while(obj.errors[counter]){
       if(obj.errors[counter].name === strName){
