@@ -25,6 +25,52 @@ let array = {
     });
   }
 };
+
+let ajax = (() => {
+  let obj = {};
+  obj.json2form = (json) => {
+    let urlEncodedData = '';
+    let urlEncodedDataPairs = [];
+    for (let name in json) {
+      urlEncodedDataPairs.push(
+        encodeURIComponent(name) + '=' + encodeURIComponent(json[name])
+      );
+    }
+    urlEncodedData = urlEncodedDataPairs.join('&').replace(/%20/g, '+');
+    return urlEncodedData;
+  };
+  obj.request = (arg) => {
+    if (!arg.address) return false;
+    let address = arg.address;
+    let method = arg.method || 'GET';
+    var XHR = ('onload' in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
+    obj.xhr = new XHR();
+    obj.xhr.open(method, address, true);
+    return obj;
+  };
+  obj.success = (callback) => {
+    if (!callback) return false;
+    obj.xhr.onload = function () {
+      callback(this.responseText);
+    };
+    return obj;
+  };
+  obj.error = (callback) => {
+    if (!callback) return false;
+    obj.xhr.onerror = function () {
+      callback(this.status);
+    };
+    return obj;
+  };
+  obj.send = (arg) => {
+    let urlEncodedData = obj.json2form(arg);
+    obj.xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    obj.xhr.send(urlEncodedData);
+  };
+
+  return obj;
+})();
+
 export default (() => {
   let obj = { };
   obj.errors = [ ];
@@ -43,6 +89,13 @@ export default (() => {
     return returnItem;
   };
   obj.addRule = (arg) => {
+    console.log('add');
+    // arg example:
+    // {
+    //   expression: !MAIL || MAIL === '',
+    //   name: 'test',
+    //   msg: 'Error'
+    // }
     if (arg.expression) {
       obj.addError(arg);
     } else {
@@ -50,6 +103,47 @@ export default (() => {
     }
     return obj;
   };
+  obj.serverCheck = (objArg) => {
+    // objArg example:
+    // {
+    //   address: 'http://servername/path',
+    //   method: 'POST',
+    //   success: (responce)=>{console.log(responce)},
+    //   error: (responce)=>{console.log(responce)},
+    //   data: {
+    //     field1: 'blabla blah',
+    //     field2: 'blabla blah'
+    //   }
+    // }
+    if (!objArg || typeof objArg === 'number') return false;
+    if (typeof objArg === 'string') {
+      try {
+        objArg = JSON.parse(objArg);
+      } catch (e) {
+        return false;
+      }
+    }
+    if (
+      objArg.hasOwnProperty('address') === false ||
+      objArg.hasOwnProperty('data') === false) return false;
+    if (objArg.hasOwnProperty('success') === false) return false;
+    let address = objArg.address;
+    let method = objArg.method || 'POST';
+    let data = objArg.data;
+    let success = objArg.success;
+    let error = objArg.error || (() => { return () => { }; })();
+    console.log(ajax);
+    ajax
+      .request({
+        address: address,
+        method: method
+      })
+      .success(e => success(e))
+      .error(e => error(e))
+      .send(data);
+    return obj;
+  };
+
   obj.getErrors = (name) => {
     let object = obj.get(name);
     let item = object && object.hasOwnProperty('object') ? object.object : undefined;
@@ -97,11 +191,23 @@ export default (() => {
   obj.deleteError = (arg) => {
     let object = obj.get(arg.name);
     let item = object && object.hasOwnProperty('object') ? object.object : undefined;
-    let index = object && object.hasOwnProperty('index') ? object.index : undefined;
+    // let index = object && object.hasOwnProperty('index') ? object.index : undefined;
     if (item !== undefined) {
       array.deleteItemArrByElement(arg.msg, item.msgs);
     }
     obj.emptyCheck();
+  };
+
+  obj.deleteAllErrorByName = (strName) => {
+    console.log(obj.errors);
+    let counter = 0;
+    while(obj.errors[counter]){
+      if(obj.errors[counter].name === strName){
+        obj.errors.pop(counter);
+        counter = 0;
+      }
+      counter++;
+    }
   };
 
   return obj;
