@@ -1,2 +1,6 @@
+.babelrc
+.editorconfig
+.eslintignore
+.eslintrc.js
 lib/
 node_modules/
