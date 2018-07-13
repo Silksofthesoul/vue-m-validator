@@ -1,4 +1,5 @@
 # vue-m-validator
+[![NPM version](https://img.shields.io/npm/v/vue-m-validator.svg?style=flat)](https://www.npmjs.com/package/vue-m-validator) [![NPM monthly downloads](https://img.shields.io/npm/dm/vue-m-validator.svg?style=flat)](https://npmjs.org/package/vue-m-validator) [![NPM total downloads](https://img.shields.io/npm/dt/vue-m-validator.svg?style=flat)](https://npmjs.org/package/vue-m-validator)
 
 Data Validation Library, for VueJs. Perhaps useful for other libraries/frameworks and other projects, but i created this library and using with VueJs with reactive data.
 
