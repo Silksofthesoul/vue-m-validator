@@ -5,7 +5,7 @@
         <div class="card todo-tracker-modal">
           <h5 class="card-header">
             <div class="row">
-              <div class="col-10 col-sm-10 col-md-10 col-lg-10 pt-2 text-left">Sign in / Sign up</div>
+              <div class="col-10 col-sm-10 col-md-10 col-lg-10 pt-2 text-left">{{this.getLocalMsg('SGN_LABEL_LOGIN')}} / {{this.getLocalMsg('SGN_LABEL_REGST')}}</div>
               <div class="col-2 col-sm-2 col-md-2 col-lg-2"><button type="button" class="btn btn-light" style="float: right;" @click="closeMe"><font-awesome-icon icon="times" /></button></div>
             </div>
           </h5>
@@ -16,7 +16,7 @@
                 v-bind:class="{active: isLogin}"
                 @click="setLogin"
                 data-toggle="tab" role="tab">
-                  Login
+                  {{this.getLocalMsg('SGN_LABEL_LOGIN')}}
               </div>
             </li>
             <li class="nav-item">
@@ -26,7 +26,7 @@
                 @click="setRegistration"
                 data-toggle="tab"
                 role="tab">
-                  Registration
+                  {{this.getLocalMsg('SGN_LABEL_REGST')}}
               </div>
             </li>
           </ul>
@@ -63,6 +63,7 @@
 <script>
 // -----styles:
 import '@/assets/less/components/login-modal.less';
+import '@/assets/less/fade.less';
 
 // -----vue components:
 import LoginForm from '@/components/LoginModal/LoginForm';
@@ -73,7 +74,7 @@ export default {
   data () {
     return {
       isLogin: true,
-      isRegistration: false,
+      isRegistration: false
     };
   },
   methods: {
