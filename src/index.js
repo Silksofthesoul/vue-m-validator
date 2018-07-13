@@ -113,7 +113,7 @@ export default (() => {
     let method = objArg.method || 'POST';
     let data = objArg.data;
     let success = objArg.success;
-    let error = objArg.error || (() => { return () => { }; })();    
+    let error = objArg.error || (() => { return () => { }; })();
     ajax
       .request({
         address: address,
@@ -155,6 +155,7 @@ export default (() => {
         item.msgs.push(arg.msg);
       }
     }
+    return obj;
   };
 
   obj.emptyCheck = () => {
@@ -176,6 +177,7 @@ export default (() => {
       array.deleteItemArrByElement(arg.msg, item.msgs);
     }
     obj.emptyCheck();
+    return obj;
   };
 
   obj.deleteAllErrorByName = (strName) => {
@@ -187,6 +189,7 @@ export default (() => {
       }
       counter++;
     }
+    return obj;
   };
 
   return obj;
