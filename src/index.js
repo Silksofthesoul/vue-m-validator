@@ -14,7 +14,6 @@ let array = {
     return false;
   },
   deleteItemArrByElement: (element, _array) => {
-    let keys = [];
     let counter = 0;
     while(_array[counter]){
       if(_array[counter] === element){

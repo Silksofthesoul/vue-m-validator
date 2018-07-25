@@ -9,6 +9,14 @@ Data Validation Library, for VueJs. Perhaps useful for other libraries/framework
 ```Commandline
 npm install --save vue-m-validator
 ```
+or
+```Commandline
+npm i -S vue-m-validator
+```
+#### Update package
+```Commandline
+npm update vue-m-validator
+```
 
 ## Use case
 [example with components](https://github.com/Silksofthesoul/vue-m-validator/tree/master/example)
