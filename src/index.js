@@ -15,14 +15,15 @@ let array = {
   },
   deleteItemArrByElement: (element, _array) => {
     let keys = [];
-    _array.forEach((item, i, arr) => {
-      if (item === element) {
-        keys.push(i);
+    let counter = 0;
+    while(_array[counter]){
+      if(_array[counter] === element){
+        _array.splice(counter, 1);
+        counter = counter -1;
+        continue;
       }
-    });
-    keys.forEach((item, i, arr) => {
-      _array.splice(item, item + 1);
-    });
+      counter++;
+    }
   }
 };
 
@@ -184,8 +185,9 @@ export default (() => {
     let counter = 0;
     while(obj.errors[counter]){
       if(obj.errors[counter].name === strName){
-        obj.errors.pop(counter);
-        counter = 0;
+        obj.errors.splice(counter, 1);
+        counter = counter-1;
+        continue;
       }
       counter++;
     }
